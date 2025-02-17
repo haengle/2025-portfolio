@@ -16,7 +16,7 @@ const Header : FC = () => {
         </div>
 
         <div className='scroll-down'>
-            <a href='#project'>
+            <a href='#projects'>
                 <span className='animate-arrow' dangerouslySetInnerHTML={{ __html: chevronAnimate }} />
                 <span>see some of my projects</span>
             </a>

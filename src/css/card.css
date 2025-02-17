@@ -1,0 +1,145 @@
+@import "vars.css";
+
+.card-container {
+	display: grid;
+	grid-template-columns: 1fr;
+	padding: 2rem;
+	align-items: center;
+}
+
+.project-0,
+.project-3 {
+	background-color: var(--indigo-dye);
+}
+
+.project-1,
+.project-4 {
+	background-color: var(--midnight-green-2);
+}
+
+.project-2 {
+	background-color: var(--russian-violet);
+}
+
+@media screen and (min-width: 920px) {
+	.card-container {
+		grid-template-columns: 1fr 1fr;
+		padding: 0 4rem;
+		height: 100dvh;
+	}
+}
+
+.project-header h2 {
+	font-weight: 300;
+	font-size: 2rem;
+	letter-spacing: 0.1rem;
+	margin-bottom: 1.5rem;
+	color: #fff;
+}
+
+.header-buttons {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.site-link,
+.code-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-size: 1rem;
+	color: var(--indigo-dye);
+	text-decoration: none;
+	border-radius: 5rem;
+	background-color: var(--light-teal);
+	padding: 0.5rem 1.25rem;
+	font-size: 0.875rem;
+	line-height: 1.25rem;
+	margin-right: 0.5rem;
+	transition: background-color 0.2s;
+	font-family: "Quicksand", sans-serif;
+	font-weight: 700;
+
+	span {
+		display: inline-block;
+		line-height: 0;
+	}
+
+	&:hover,
+	&:focus {
+		color: var(--indigo-dye);
+		background-color: var(--electric-teal);
+	}
+}
+
+.site-link svg,
+.code-button svg {
+	width: 1rem;
+	height: 1rem;
+	fill: var(--indigo-dye);
+}
+
+.code-button {
+	-webkit-appearance: none;
+	appearance: none;
+	border: none;
+	cursor: pointer;
+}
+
+.summary-container {
+	line-height: 1.75;
+	letter-spacing: 0.02rem;
+	color: #fff;
+	font-size: 0.875rem;
+	padding-bottom: 1rem;
+}
+
+@media screen and (min-width: 600px) {
+	.summary-container {
+		font-size: 1rem;
+	}
+	.project-header {
+		padding: 0 2rem;
+	}
+	.site-link,
+	.code-button {
+		margin-right: 1rem;
+	}
+}
+
+.codeModal {
+	height: 80vh;
+	max-height: 500px;
+	font-size: 0.8rem;
+	width: 80vw;
+	max-width: 700px;
+	-webkit-overflow-scrolling: touch;
+}
+
+.video-container {
+	position: relative;
+	padding-top: 56.25%; /* 720 / 1280 = 0.5625 */
+}
+
+.react-player {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+@media screen and (max-width: 768px) {
+	.video-container {
+		padding-top: 0;
+	}
+	.react-player {
+		display: none;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.video-fallback {
+		display: none;
+	}
+}

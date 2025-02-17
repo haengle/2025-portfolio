@@ -79,6 +79,23 @@ header {
 	background-size: 180% 180%;
 	animation: gradient-animation 18s ease infinite;
 	gap: 10vh;
+
+	h2 {
+		font-weight: 600;
+		font-family: "Quicksand", sans-serif;
+		line-height: 1.65;
+		letter-spacing: 0.1rem;
+		font-size: 1.2rem;
+		padding: 0 6ch;
+		margin-top: 2rem;
+
+		span {
+			color: var(--light-teal);
+			text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+			white-space: nowrap;
+			line-height: 2;
+		}
+	}
 }
 
 .intro {
@@ -94,23 +111,6 @@ h1 {
 
 	.first-letter {
 		margin-inline-end: 2px;
-	}
-}
-
-h2 {
-	font-weight: 600;
-	font-family: "Quicksand", sans-serif;
-	line-height: 1.65;
-	letter-spacing: 0.1rem;
-	font-size: 1.2rem;
-	padding: 0 6ch;
-	margin-top: 2rem;
-
-	span {
-		color: var(--light-teal);
-		text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-		white-space: nowrap;
-		line-height: 2;
 	}
 }
 
@@ -162,10 +162,10 @@ h2 {
 		align-items: flex-end;
 		gap: 5vw;
 		padding: 0 5%;
-	}
 
-	h2 {
-		padding: 0;
+		h2 {
+			padding: 0;
+		}
 	}
 
 	.intro {
