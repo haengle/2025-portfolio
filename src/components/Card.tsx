@@ -4,6 +4,7 @@ import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { usePrefersReducedMotion } from '../hooks/prefersReducedMotion';
 
 import '../css/card.css'
 
@@ -11,7 +12,6 @@ type CardProps = {
     index: number;
     siteLink: string;
     image?: string;
-    imageDesc?: string;
     title: string;
     summary: string;
     video?: string;
@@ -24,7 +24,7 @@ const extLinkIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 51
 
 const codeIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"/></svg>`;
 
-const Card = ({ index, siteLink, image, imageDesc, title, summary, video, videoFallback, codeJs, codeCss } : CardProps)=> {
+const Card = ({ index, siteLink, image, title, summary, video, videoFallback, codeJs, codeCss } : CardProps)=> {
 
     const [open, setOpen] = useState(false);
 
@@ -32,6 +32,8 @@ const Card = ({ index, siteLink, image, imageDesc, title, summary, video, videoF
     const onCloseModal = () => setOpen(false);
 
     const hasCode = codeJs || codeCss;
+
+    const prefersReducedMotion = usePrefersReducedMotion();
 
     return (
         <section className={`card-container project-${index}`}>
@@ -48,7 +50,7 @@ const Card = ({ index, siteLink, image, imageDesc, title, summary, video, videoF
                     }
                     {hasCode &&
                     <button className='code-button' onClick={onOpenModal}>Code snippet <span dangerouslySetInnerHTML={{ __html: codeIcon }} /></button>
-             }
+                    }
                 </div>
                 <div className='summary-container'>
                     <p>{summary}</p>
@@ -57,25 +59,23 @@ const Card = ({ index, siteLink, image, imageDesc, title, summary, video, videoF
                         <Modal open={open} onClose={onCloseModal} center 
                             classNames={{
                             modal: 'codeModal',
-                            }}>
+                        }}>
                         {codeJs &&
-                        <div>
-                            <h3>Javascript</h3>
-                            <SyntaxHighlighter language="javascript" style={docco}>
-                                {codeJs}
-                            </SyntaxHighlighter>
-                        </div>
-                        
-}
+                            <div>
+                                <h3>Javascript</h3>
+                                <SyntaxHighlighter language="javascript" style={docco}>
+                                    {codeJs}
+                                </SyntaxHighlighter>
+                            </div>   
+                        }
                         {codeCss &&
-                        <div>
-                            <h3>CSS</h3> 
-                            <SyntaxHighlighter language="css" style={docco}>
-                            {codeCss}
-                        </SyntaxHighlighter>
-                        </div>
-                       
-}
+                            <div>
+                                <h3>CSS</h3> 
+                                <SyntaxHighlighter language="css" style={docco}>
+                                    {codeCss}
+                                </SyntaxHighlighter>
+                            </div>     
+                        }
                         </Modal>
                     }
                 </div>
@@ -83,10 +83,10 @@ const Card = ({ index, siteLink, image, imageDesc, title, summary, video, videoF
             <div className="project-summary">
                 
                 {image &&
-                <div className='image-container'>
-                    <img src={image} alt={imageDesc} />
-                </div>
-                  }
+                    <div className='image-container'>
+                        <img src={image} alt={title} width={700} height={700} />
+                    </div>
+                }
 
                 {video &&
                     <div className='video-container'>
@@ -96,12 +96,12 @@ const Card = ({ index, siteLink, image, imageDesc, title, summary, video, videoF
                         loop={true}
                         controls
                         className='react-player'
-                        playing
+                        playing={prefersReducedMotion ? false : true}
                         width='100%'
                         height='100%'
                         />
                         <div className='video-fallback'>
-                         <img src={videoFallback} alt={title} />
+                         <img src={videoFallback} alt={title} width={700} height={700} />
                         </div>
                     </div>
                 }

@@ -1,8 +1,8 @@
-import InmoImg from './assets/inmo.jpg';
-import TifbImg from './assets/tifb.png';
-import LocalImg from './assets/local-chart.png';
-import ExchangeImg from './assets/exchange.jpg';
-import FnbImg from './assets/henning.jpg';
+import InmoImg from './assets/inmo.webp';
+import TifbImg from './assets/tifb.webp';
+import LocalImg from './assets/local-chart.webp';
+import ExchangeImg from './assets/exchange.webp';
+import FnbImg from './assets/henning.webp';
 
 const InmoJs = `const InmoJs = 
 // only trigger JS animations for users without prefers reduced motion

@@ -77,7 +77,6 @@ header {
 		var(--midnight-green-2)
 	);
 	background-size: 180% 180%;
-	animation: gradient-animation 18s ease infinite;
 	gap: 10vh;
 
 	h2 {
@@ -146,10 +145,19 @@ h1 {
 	display: inline-block;
 	width: 1.25rem;
 	height: 1.25rem;
-	animation: arrow-bounce 2s ease infinite;
 
 	svg {
 		fill: var(--electric-teal);
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	header {
+		animation: gradient-animation 18s ease infinite;
+	}
+
+	.animate-arrow {
+		animation: arrow-bounce 2s ease infinite;
 	}
 }
 
